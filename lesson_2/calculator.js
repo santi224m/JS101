@@ -9,16 +9,37 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
+function invalidNumber(number) {
+  return Number.isNaN(Number(number)) || number.trimStart() === '';
+}
+
 prompt('Welcome to Calculator!');
 
 prompt('What\'s the first number?');
 let number1 = readline.question();
 
+while (invalidNumber(number1)) {
+  prompt('Hmm... that doesn\'t look like a valid number.');
+  prompt('Please try again.');
+  number1 = readline.question();
+}
+
 prompt('What\'s the second number?');
 let number2 = readline.question();
 
+while (invalidNumber(number2)) {
+  prompt('Hmm... that doesn\'t look like a valid number.');
+  prompt('Please try again.');
+  number2 = readline.question();
+}
+
 prompt('What operation would you like to perform?\n1) Add 2) Substract 3) Multiply 4) Divide');
 let operation = readline.question();
+
+while (!['1', '2', '3', '4'].includes(operation)) {
+  prompt('Must choose 1, 2, 3, or 4');
+  operation = readline.question();
+}
 
 let output;
 switch (operation) {
