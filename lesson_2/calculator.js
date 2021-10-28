@@ -65,4 +65,4 @@ do {
   prompt('Do you want to perform another calculation? (y/N)');
   useCalculator = readline.question();
 
-} while (useCalculator && useCalculator.toLowerCase() === 'y');
+} while (useCalculator && useCalculator[0].toLowerCase() === 'y');
