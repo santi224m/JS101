@@ -15,7 +15,7 @@ function invalidNumber(number) {
 }
 
 let useCalculator;
-let userLanugage = 'es';
+let userLanugage = 'en';
 
 prompt(messages[userLanugage].welcome);
 
