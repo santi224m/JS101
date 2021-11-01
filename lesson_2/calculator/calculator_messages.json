@@ -6,7 +6,8 @@
     "invalidNumber" : "Hmm... that doesn't look like a valid number.\n=> Please try again.",
     "selectOperation" : "What operation would you like to perform?\n1) Add 2) Substract 3) Multiply 4) Divide",
     "listOptions" : "Must choose 1, 2, 3, or 4",
-    "continue" : "Do you want to perform another calculation? (y/N)"
+    "continue" : "Do you want to perform another calculation? (y/N)",
+    "result" : "The result is:"
   },
   "es" : {
     "welcome" : "¡Bienvenido a Calculadora!",
@@ -15,6 +16,7 @@
     "invalidNumber" : "Mmm ... no parece un número válido.\n=> Inténtalo de nuevo.",
     "selectOperation" : "¿Qué operación le gustaría realizar?\n1) Sumar 2) Restar 3) Multiplicar 4) Dividir",
     "listOptions" : "Debe elegir 1, 2, 3 o 4",
-    "continue" : "¿Quieres realizar otro cálculo? (y/N)"
+    "continue" : "¿Quieres realizar otro cálculo? (y/N)",
+    "result" : "El resultado es:"
   }
 }
