@@ -15,31 +15,32 @@ function invalidNumber(number) {
 }
 
 let useCalculator;
+let userLanugage = 'es';
 
-prompt(messages.welcome);
+prompt(messages[userLanugage].welcome);
 
 do {
-  prompt(messages.firstNumber);
+  prompt(messages[userLanugage].firstNumber);
   let number1 = readline.question();
 
   while (invalidNumber(number1)) {
-    prompt(messages.invalidNumber);
+    prompt(messages[userLanugage].invalidNumber);
     number1 = readline.question();
   }
 
-  prompt(messages.secondNumber);
+  prompt(messages[userLanugage].secondNumber);
   let number2 = readline.question();
 
   while (invalidNumber(number2)) {
-    prompt(messages.invalidNumber);
+    prompt(messages[userLanugage].invalidNumber);
     number2 = readline.question();
   }
 
-  prompt(messages.selectOperation);
+  prompt(messages[userLanugage].selectOperation);
   let operation = readline.question();
 
   while (!['1', '2', '3', '4'].includes(operation)) {
-    prompt(messages.listOptions);
+    prompt(messages[userLanugage].listOptions);
     operation = readline.question();
   }
 
@@ -61,7 +62,7 @@ do {
 
   prompt(`The result is: ${output}`);
 
-  prompt(messages.continue);
+  prompt(messages[userLanugage].continue);
   useCalculator = readline.question();
 
 } while (useCalculator && useCalculator[0].toLowerCase() === 'y');
