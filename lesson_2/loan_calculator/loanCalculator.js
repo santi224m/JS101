@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-const messages = require('./messages.json');
+const MESSAGES = require('./messages.json');
 const MONTHS_IN_YEAR = 12;
 const PERCENTAGE_BASE = 100;
 let continueCalculation = true;
@@ -14,10 +14,10 @@ let invalidNumber = number => {
 
 let getInput = (messageQuestion, messageError = 'invalidNumber') => {
   let userInput;
-  prompt(messages[messageQuestion]);
+  prompt(MESSAGES[messageQuestion]);
   userInput = readline.question().replaceAll(',', '');
   while (invalidNumber(userInput)) {
-    prompt(messages[messageError]);
+    prompt(MESSAGES[messageError]);
     userInput = readline.question().replaceAll(',', '');
   }
 
@@ -25,7 +25,7 @@ let getInput = (messageQuestion, messageError = 'invalidNumber') => {
 };
 
 console.clear();
-prompt(messages.welcome);
+prompt(MESSAGES.welcome);
 do {
   let loanAmount = getInput('loanAmount');
   let apr = getInput('apr') / PERCENTAGE_BASE;
@@ -44,11 +44,11 @@ do {
               (1 - Math.pow((1 + monthlyInterestRate),(-totalDurationMonths))));
   }
   prompt(`Your monthly payment is: $${monthlyPayments.toFixed(2)}`);
-  prompt(messages.continueCalculation);
+  prompt(MESSAGES.continueCalculation);
   continueCalculation = readline.question().toLowerCase()[0];
   if (continueCalculation && continueCalculation !== 'n') {
     console.clear();
   }
 } while (continueCalculation && continueCalculation !== 'n');
 
-prompt(messages.endMessage);
+prompt(MESSAGES.endMessage);
