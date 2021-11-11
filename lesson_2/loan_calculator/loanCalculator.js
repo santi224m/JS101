@@ -24,6 +24,7 @@ let getInput = (messageQuestion, messageError = 'invalidNumber') => {
 
 prompt(messages.welcome);
 do {
+  console.clear();
   let loanAmount = getInput('loanAmount');
   let apr = getInput('apr') / 100;
   let loanDurationYears = getInput('loanDurationYears');
