@@ -1,3 +1,13 @@
+// ---------- Todo List ----------
+// Change invalidNumber message from 'positive' to 'non-negative'
+// Don't allow user to enter 0 for loan amount
+// Don't allow user to enter 0 for month when they enter 0 for year
+// Strengthen input validation (user muster y or n to continue)
+// On line 12, coerce number into a Number instead of letting JS coerce it implictly
+// Simplify loan duration months equation
+// Simplify loop by moving code into functions
+// ----------    End    ----------
+
 const readline = require('readline-sync');
 const MESSAGES = require('./messages.json');
 const MONTHS_IN_YEAR = 12;
