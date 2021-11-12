@@ -1,5 +1,4 @@
 // ---------- Todo List ----------
-// Don't allow user to enter 0 for loan amount
 // Don't allow user to enter 0 for month when they enter 0 for year
 // Strengthen input validation (user muster y or n to continue)
 // On line 12, coerce number into a Number instead of letting JS coerce it implictly
@@ -37,6 +36,9 @@ console.clear();
 prompt(MESSAGES.welcome);
 do {
   let loanAmount = getInput('loanAmount');
+  while (loanAmount === 0) {
+    loanAmount = getInput('loanAmountZero');
+  }
   let apr = getInput('apr') / PERCENTAGE_BASE;
   let loanDurationYears = getInput('loanDurationYears');
   let loanDurationMonths = getInput('loanDurationMonths');
