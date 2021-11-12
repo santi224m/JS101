@@ -1,5 +1,4 @@
 // ---------- Todo List ----------
-// Change invalidNumber message from 'positive' to 'non-negative'
 // Don't allow user to enter 0 for loan amount
 // Don't allow user to enter 0 for month when they enter 0 for year
 // Strengthen input validation (user muster y or n to continue)
