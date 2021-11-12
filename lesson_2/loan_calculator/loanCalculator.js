@@ -1,5 +1,4 @@
 // ---------- Todo List ----------
-// Don't allow user to enter 0 for month when they enter 0 for year
 // Strengthen input validation (user muster y or n to continue)
 // On line 12, coerce number into a Number instead of letting JS coerce it implictly
 // Simplify loan duration months equation
@@ -42,6 +41,11 @@ do {
   let apr = getInput('apr') / PERCENTAGE_BASE;
   let loanDurationYears = getInput('loanDurationYears');
   let loanDurationMonths = getInput('loanDurationMonths');
+  while (loanDurationYears === 0 && loanDurationMonths === 0) {
+    prompt(MESSAGES.noDurationZero);
+    loanDurationYears = getInput('loanDurationYears');
+    loanDurationMonths = getInput('loanDurationMonths');
+  }
   let totalLoanDuration = loanDurationYears +
                       (loanDurationMonths / MONTHS_IN_YEAR);
   let monthlyInterestRate = apr / MONTHS_IN_YEAR;

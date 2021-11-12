@@ -1,10 +1,12 @@
 {
   "welcome" : "Welcome to Loan Calculator!",
   "loanAmount" : "Enter the loan amount in dollars",
+  "loanAmountZero" : "Enter a number greater than 0 for the loan",
   "apr" : "Enter the Anual Percentage Rate (APR)",
   "loanDurationYears" : "How many complete years is the loan duration for? (You can enter months next)",
   "loanDurationMonths" : "How many months is the loan duration for?",
   "invalidNumber" : "Please enter a non-negative number",
   "continueCalculation" : "Would you like to make another loan calculation? (y/N)",
-  "endMessage" : "Have a nice day!"
+  "endMessage" : "Have a nice day!",
+  "noDurationZero" : "You cannot set the duration for years and months both to zero"
 }
