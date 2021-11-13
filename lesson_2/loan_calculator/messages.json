@@ -7,6 +7,7 @@
   "loanDurationMonths" : "How many months is the loan duration for?",
   "invalidNumber" : "Please enter a non-negative number",
   "continueCalculation" : "Would you like to make another loan calculation? (y/N)",
+  "continueCalculationInvalid" : "Please enter 'y' to continue or 'n' to stop program",
   "endMessage" : "Have a nice day!",
   "noDurationZero" : "You cannot set the duration for years and months both to zero"
 }

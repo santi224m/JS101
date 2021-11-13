@@ -1,6 +1,6 @@
 // ---------- Todo List ----------
-// Strengthen input validation (user muster y or n to continue)
-// On line 12, coerce number into a Number instead of letting JS coerce it implictly
+// On line 12, coerce number into a Number
+//                    instead of letting JS coerce it implictly
 // Simplify loan duration months equation
 // Simplify loop by moving code into functions
 // ----------    End    ----------
@@ -9,7 +9,7 @@ const readline = require('readline-sync');
 const MESSAGES = require('./messages.json');
 const MONTHS_IN_YEAR = 12;
 const PERCENTAGE_BASE = 100;
-let continueCalculation = true;
+let continueCalculation;
 
 let prompt = text => {
   console.log('=> ' + text);
@@ -60,7 +60,11 @@ do {
   }
   prompt(`Your monthly payment is: $${monthlyPayments.toFixed(2)}`);
   prompt(MESSAGES.continueCalculation);
-  continueCalculation = readline.question().toLowerCase()[0];
+  continueCalculation = readline.question().toLowerCase();
+  while (continueCalculation !== 'y' && continueCalculation !== 'n' && continueCalculation !== '') {
+    prompt(MESSAGES.continueCalculationInvalid);
+    continueCalculation = readline.question().toLowerCase();
+  }
   if (continueCalculation && continueCalculation !== 'n') {
     console.clear();
   }
