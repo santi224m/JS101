@@ -1,10 +1,3 @@
-// ---------- Todo List ----------
-// On line 12, coerce number into a Number
-//                    instead of letting JS coerce it implictly
-// Simplify loan duration months equation
-// Simplify loop by moving code into functions
-// ----------    End    ----------
-
 const readline = require('readline-sync');
 const MESSAGES = require('./messages.json');
 const MONTHS_IN_YEAR = 12;
@@ -16,7 +9,7 @@ let prompt = text => {
 };
 
 let invalidNumber = number => {
-  return Number.isNaN(Number(number)) || number.trimStart() === '' || number < 0;
+  return Number.isNaN(Number(number)) || number.trimStart() === '' || Number(number) < 0;
 };
 
 let getInput = (messageQuestion, messageError = 'invalidNumber') => {
@@ -29,6 +22,35 @@ let getInput = (messageQuestion, messageError = 'invalidNumber') => {
   }
 
   return Number(userInput);
+};
+
+let askToCalcAgain = () => {
+  prompt(MESSAGES.continueCalculation);
+  continueCalculation = readline.question().toLowerCase();
+  while (continueCalculation !== 'y' && continueCalculation !== 'n' && continueCalculation !== '') {
+    prompt(MESSAGES.continueCalculationInvalid);
+    continueCalculation = readline.question().toLowerCase();
+  }
+  if (continueCalculation && continueCalculation !== 'n') {
+    console.clear();
+  }
+};
+
+let calculateLoan = (
+  loanAmount, apr, loanDurationYears, loanDurationMonths) => {
+  let monthlyInterestRate = apr / MONTHS_IN_YEAR;
+  let totalDurationMonths = loanDurationMonths +
+                          (loanDurationYears * MONTHS_IN_YEAR);
+  let monthlyPayments;
+  if (apr === 0) {
+    monthlyPayments = loanAmount / totalDurationMonths;
+  } else {
+    monthlyPayments = loanAmount *
+              (monthlyInterestRate /
+              (1 - Math.pow((1 + monthlyInterestRate),(-totalDurationMonths))));
+  }
+
+  return monthlyPayments;
 };
 
 console.clear();
@@ -46,28 +68,10 @@ do {
     loanDurationYears = getInput('loanDurationYears');
     loanDurationMonths = getInput('loanDurationMonths');
   }
-  let totalLoanDuration = loanDurationYears +
-                      (loanDurationMonths / MONTHS_IN_YEAR);
-  let monthlyInterestRate = apr / MONTHS_IN_YEAR;
-  let totalDurationMonths =  totalLoanDuration * MONTHS_IN_YEAR;
-  let monthlyPayments;
-  if (apr === 0) {
-    monthlyPayments = loanAmount / totalDurationMonths;
-  } else {
-    monthlyPayments = loanAmount *
-              (monthlyInterestRate /
-              (1 - Math.pow((1 + monthlyInterestRate),(-totalDurationMonths))));
-  }
+  let monthlyPayments = calculateLoan(
+    loanAmount, apr, loanDurationYears, loanDurationMonths);
   prompt(`Your monthly payment is: $${monthlyPayments.toFixed(2)}`);
-  prompt(MESSAGES.continueCalculation);
-  continueCalculation = readline.question().toLowerCase();
-  while (continueCalculation !== 'y' && continueCalculation !== 'n' && continueCalculation !== '') {
-    prompt(MESSAGES.continueCalculationInvalid);
-    continueCalculation = readline.question().toLowerCase();
-  }
-  if (continueCalculation && continueCalculation !== 'n') {
-    console.clear();
-  }
+  askToCalcAgain();
 } while (continueCalculation && continueCalculation !== 'n');
 
 prompt(MESSAGES.endMessage);
