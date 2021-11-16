@@ -1,5 +1,5 @@
-// Write a function that determines and returns the UTF-16 string value
-// of a string passed in as an argument.
+// Write a function that determines and returns the UTF-16 
+// string value of a string passed in as an argument.
 
 function utf16Value (str) {
   let count = 0;
